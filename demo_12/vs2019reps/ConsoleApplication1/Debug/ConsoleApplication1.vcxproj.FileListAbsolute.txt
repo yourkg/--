@@ -1,0 +1,2 @@
+C:\Users\mail\Desktop\vs2019reps\ConsoleApplication1\Debug\ConsoleApplication1.exe
+C:\Users\mail\Desktop\vs2019reps\ConsoleApplication1\Debug\ConsoleApplication1.pdb

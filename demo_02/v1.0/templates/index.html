@@ -1,0 +1,1037 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>v1.0</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        .item::before {
+            background-color: white;
+            background-size: cover;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .user {
+            position: fixed;
+            width: 20em;
+            height: 3em;
+            padding: 10px;
+            border-radius: 0px;
+            box-shadow: 0 0 2px 1px #000;
+            color: #000;
+            font-size: 15px;
+            font-weight: lighter;
+            line-height: 35px;
+            overflow: hidden;
+            background-color: white;
+            top: 1px;
+            left: 1px;
+            z-index: 999;
+        }
+            .user:hover {
+                box-shadow: 0 0 20px 1px #000;
+                cursor: pointer;
+            }
+
+        .item {
+            position: relative;
+            width: 85%;
+            height: 85%;
+            min-width: 80em;
+            padding: 30px;
+            border-radius: 0px;
+            box-shadow: 0 0 5px 1px #fff;
+            color: #000;
+            font-size: 15px;
+            font-weight: lighter;
+            line-height: 35px;
+            overflow: hidden;
+            background-color: white;
+            text-align: center;
+        }
+
+        .itemLeft {
+            position: relative;
+            display: inline-block;
+            width: 42.5%;
+            min-width: 30em;
+            height: 100%;
+            padding: 0px;
+            border-radius: 0px;
+            box-shadow: 0 0 5px 1px #000;
+            color: #000;
+            font-size: 15px;
+            font-weight: lighter;
+            line-height: 35px;
+            overflow: hidden;
+            background-color: white;
+        }
+
+        .itemRight {
+            position: relative;
+            display: inline-block;
+            width: 42.5%;
+            min-width: 30em;
+            height: 100%;
+            padding: 0px;
+            border-radius: 0px;
+            box-shadow: 0 0 5px 1px #000;
+            color: #000;
+            font-size: 15px;
+            font-weight: lighter;
+            line-height: 35px;
+            overflow: hidden;
+            background-color: beige;
+        }
+
+           // .itemRight:hover {
+           //     box-shadow: 0 0 20px 1px #000;
+           //     cursor: pointer;
+           // }
+
+        .itemLeft:hover {
+            box-shadow: 0 0 20px 1px #000;
+            cursor: pointer;
+        }
+
+        .item::before {
+            content: '';
+            display: block;
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: -20px;
+            filter: blur(10px);
+        }
+
+        .item2 {
+            display: none;
+            width: 90%;
+            height: 90%;
+        }
+
+        .item3 {
+            display: none;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            padding: 0px;
+            border-radius: 0px;
+            box-shadow: 0 0 5px 1px #fff;
+            color: #000;
+            font-size: 15px;
+            font-weight: lighter;
+            line-height: 35px;
+            overflow: auto;
+            background-color: #fff;
+            text-align: left;
+        }
+
+        .myobject {
+            position: relative;
+            float: left;
+            margin-left: 2em;
+            display: inline-block;
+            width: 20em;
+            height: 20em;
+            padding: 0px;
+            border-radius: 0px;
+            box-shadow: 0 0 5px 1px #000;
+            color: #000;
+            font-size: 15px;
+            font-weight: lighter;
+            line-height: 35px;
+            overflow: hidden;
+            background-color: white;
+        }
+
+            .myobject span {
+                font-size: 80px;
+            }
+
+            .myobject:hover {
+                box-shadow: 0 0 5px 5px #000;
+                cursor: pointer;
+            }
+
+        .mytrains {
+            position: relative;
+            float: left;
+            margin-left: 2em;
+            display: inline-block;
+            width: 20em;
+            height: 10em;
+            padding: 0px;
+            border-radius: 0px;
+            box-shadow: 0 0 5px 1px #000;
+            color: #000;
+            font-size: 15px;
+            font-weight: lighter;
+            line-height: 35px;
+            overflow: hidden;
+            background-color: white;
+        }
+
+            .mytrains b {
+                font-size: 80px;
+            }
+
+            .mytrains .del {
+                position: absolute;
+                right: 0px;
+                top: -2px;
+                color: grey;
+                FONT-SIZE: 2EM;
+            }
+
+                .mytrains .del:hover {
+                    cursor: crosshair ;
+                    background-color:grey;
+                    color:white;
+                }
+
+                .mytrains:hover {
+                    box-shadow: 0 0 5px 5px #000;
+                    cursor: pointer;
+                }
+
+        #addObject:hover {
+            box-shadow: 0 0 20px 1px #000;
+            cursor: pointer;
+        }
+
+        #addTrains:hover {
+            box-shadow: 0 0 20px 1px #000;
+            cursor: pointer;
+        }
+
+        #addForm2 {
+            display: none;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            padding: 0px;
+            border-radius: 0px;
+            box-shadow: 0 0 5px 1px #fff;
+            color: #000;
+            font-size: 15px;
+            font-weight: lighter;
+            line-height: 35px;
+            overflow: auto;
+            background-color: #fff;
+            text-align: left;
+        }
+
+        #addForm1 {
+            display: none;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            padding: 0px;
+            border-radius: 0px;
+            box-shadow: 0 0 5px 1px #fff;
+            color: #000;
+            font-size: 15px;
+            font-weight: lighter;
+            line-height: 35px;
+            overflow: auto;
+            background-color: #fff;
+            text-align: left;
+        }
+
+            #addForm1 input {
+                border: 1px solid #ccc;
+                padding: 7px 0px;
+                border-radius: 3px;
+                padding-left: 5px;
+                -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+                box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+                -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+                -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+            }
+
+                #addForm1 input:focus {
+                    border-color: #66afe9;
+                    outline: 0;
+                    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+                    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+                }
+
+                #addForm1 input[type="range"] {
+                    /*-webkit-box-shadow: 0 1px 0 0px #424242, 0 1px 0 #060607 inset, 0px 2px 10px 0px black inset, 1px 0px 2px rgba(0, 0, 0, 0.4) inset, 0 0px 1px rgba(0, 0, 0, 0.6) inset;*/
+                    -webkit-appearance: none; /*去除默认样式*/
+                    margin-top: 42px;
+                    background-color: #ebeff4;
+                    /*border-radius: 15px;*/
+                    width: 30% !important;
+                    -webkit-appearance: none;
+                    height: 4px;
+                    padding: 0;
+                    border: none;
+                    background: #ccc
+                    /*input的长度为80%，margin-left的长度为10%*/
+                }
+
+                    #addForm1 input[type="range"]::-webkit-slider-thumb {
+                        -webkit-appearance: none; /*去除默认样式*/
+                        cursor: default;
+                        top: 0;
+                        height: 20px;
+                        width: 20px;
+                        transform: translateY(0px);
+                        /*background: none repeat scroll 0 0 #5891f5;*/
+                        background: #000;
+                        border-radius: 1px;
+                        border: 1px solid #006eb3;
+                        /*-webkit-box-shadow: 0 -1px 1px #fc7701 inset;*/
+                    }
+
+
+
+            #addForm2 input {
+                border: 1px solid #ccc;
+                padding: 7px 0px;
+                border-radius: 3px;
+                padding-left: 5px;
+                -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+                box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+                -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+                -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+                transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+            }
+
+                #addForm2 input:focus {
+                    border-color: #66afe9;
+                    outline: 0;
+                    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+                    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+                }
+
+                #addForm2 input[type="range"] {
+                    /*-webkit-box-shadow: 0 1px 0 0px #424242, 0 1px 0 #060607 inset, 0px 2px 10px 0px black inset, 1px 0px 2px rgba(0, 0, 0, 0.4) inset, 0 0px 1px rgba(0, 0, 0, 0.6) inset;*/
+                    -webkit-appearance: none; /*去除默认样式*/
+                    margin-top: 42px;
+                    background-color: #ebeff4;
+                    /*border-radius: 15px;*/
+                    width: 30% !important;
+                    -webkit-appearance: none;
+                    height: 4px;
+                    padding: 0;
+                    border: none;
+                    background: #ccc
+                    /*input的长度为80%，margin-left的长度为10%*/
+                }
+
+                    #addForm2 input[type="range"]::-webkit-slider-thumb {
+                        -webkit-appearance: none; /*去除默认样式*/
+                        cursor: default;
+                        top: 0;
+                        height: 20px;
+                        width: 20px;
+                        transform: translateY(0px);
+                        /*background: none repeat scroll 0 0 #5891f5;*/
+                        background: #000;
+                        border-radius: 1px;
+                        border: 1px solid #006eb3;
+                        /*-webkit-box-shadow: 0 -1px 1px #fc7701 inset;*/
+                    }
+        .progress {
+            display:none;
+            width: 100%;
+            height: 10px;
+            border: 1px solid #ccc;
+            border-radius: 0px;
+            margin: 10px 0px;
+            overflow: hidden;
+        }
+            /* 初始状态设置进度条宽度为0px */
+            .progress > div {
+                width: 0px;
+                height: 100%;
+                background-color: black;
+                transition: all .3s ease;
+            }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            padding: 50px;
+            font-size: 58px;
+            color: #FFFFFF;
+            //text-decoration:underline;
+        }
+
+        #addForm2 p {
+            font-size: 10px;
+            padding: 0px;
+        }
+        select {
+            font-size: 20px;
+            border: solid 1px #000;
+            appearance: none;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            padding: 4px;
+            //background: url("https://raw.githubusercontent.com/ourjs/static/gh-pages/2015/arrow.png") no-repeat scroll right center transparent;
+            border: 1px solid #ccc;
+            padding: 7px 0px;
+            border-radius: 3px;
+        }
+
+
+            select::-ms-expand {
+                display: none;
+            }
+    </style>
+    <link rel="stylesheet" type="text/css" href="/static/base.css" />
+    <script type="text/javascript" src="http://d3js.org/d3.v4.min.js"></script>
+    <script type="text/javascript" src="/static/line.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="user" onclick="location.reload();" title="GO HOME!">
+        用户：
+        <span id="userid">{{login_user}}</span> &nbsp;&nbsp;磁盘空间：{{user_room}}G/2GB
+    </div>
+    <!--首页-->
+    <div class="item" id="item">
+        <div class="itemLeft" onclick="go21()" title="整理你的训练集，你可以在此进行标注等一系列操作">
+            <p>...</p>
+            <p>
+                <h1>训练集</h1>
+            </p>
+            <p>...</p>
+        </div>&nbsp;&nbsp;
+        <!--<div class="itemRight" onclick="go22()" title="还没有训练项目？赶紧来此新建一个！">-->
+        <div class="itemRight"  title="战未来">
+            <p>...</p>
+            <p>
+                <h5>该功能建议重做</h5>
+            </p>
+            <p>...</p>
+        </div>
+    </div>
+    <!--第二级页面-->
+    <!--<div class="item2"></div>-->
+    <div class="item item2" id="item21">
+        <div class="mytrains" id="addTrains" onclick="showAddForm('addForm1')">
+            <br>
+            <span style="font-size:10em;color:black">+</span>
+        </div>
+        <!--新建数据集项目表单页面-->
+        <div id="addForm1">
+            <div>
+                <div style="text-align:center">
+                    <br>
+                    <br>
+                    <hr>
+                    <br>
+                    <span>训练集名称：</span>
+                    <input id="trainsName" type="text" placeholder="例:我的训练集1"></br>
+                    <label><input name="trainsSet" type="checkbox" value="" checked="true" onchange="showRangeA(this)" id="ckA" />使用全部公共图片</label></br>
+                    <label><input name="trainsSet" type="checkbox" value="" onchange="showupImg(this)" id="ckB" />添加上传个人图片</label></br>
+                    <div id="rangeAA" style="display:none">
+                        <span>拖动滑条，选择你要包含公共图片数量：</span>
+                        <input id="rangeA" type="range" value="0" onchange="changeV()" oninput="changeV()"><span id="rangeAvlue">0</span>张
+                    </div><br>
+                    <div id="upImg" style="display:none">
+                        <span>添加图片：</span>
+                        <input id="UPtrainsFile" type="file" multiple="multiple" onchange="selectFilesNum(this)" accept=".jpg,.jpeg,.png"><span id="upvlue">0</span>张(将会上传)
+                    </div>
+                    <div>
+                        你的训练集将包含：
+                        <span style="color:red" id="sumImg">0</span>张图片
+                    </div>
+                    <div class="progress" id="uprogress">
+                        <div></div>
+                    </div>
+                    <div id="makeTrains">
+                        <button style="font-size:2em" id="button_id2" onclick="adda('trains')">创建</button>
+                    </div>
+                    <br>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="item item2" id="item22">
+        <!--<div class="myobject"><div>标题</div><div>描述</div><div><span>·</span>状态</div></div>-->
+        <div class="myobject" id="addObject" onclick="showAddForm('addForm2')">
+            <br>
+            <br>
+            <br>
+            <span style="font-size:10em;color:black">+</span>
+        </div>
+        <!--新建训练项目表单页面-->
+        <div id="addForm2">
+            <div>
+                <div style="text-align:center">
+                    <br>
+                    <hr>
+                    <br>
+                    <h1>0.5版，参考0.3修改版主要在外观上进行了修改，除第二部分外其它部分仅在后台打印了下信息</h1>
+                    <hr>
+                    <h3>一、项目基本设置</h3>
+                    <div>
+                        <input id="name" type="text" placeholder="项目名称" style="width: 355px;"></br>
+                        <textarea id="nameTxr" style="border: 1px solid #ccc; border-radius: 3px; width: 355px; height: 100px; padding: 10px; resize: none;" rows="10" cols="30">项目描述</textarea><br>
+                        <select id="mdList1" name="list1" style="width: 355px;" disabled="disabled">
+                            <option value="1">yolo4</option>
+                            <option value="2">more</option>
+                            <option value="3">and more</option>
+                        </select>
+                    </div>
+                    <br>
+                    <hr>
+
+                    <h3>二、训练集配置</h3>
+                    <div>
+                        <select id="mdList2" name="list2" style="width: 355px;">
+                            <option value="1">??</option>
+                            <option value="2">???</option>
+                            <option value="3">???</option>
+                        </select><br>
+                        <input type="radio" name="bili" value="1" />&nbsp;全部&nbsp;&nbsp;&nbsp;<input type="radio" name="bili" value="2" checked />&nbsp;8:2&nbsp;&nbsp;&nbsp;<input type="radio" name="bili" value="3"/>&nbsp;9:1&nbsp;&nbsp;&nbsp;<input type="radio" name="bili" value="4" />&nbsp;自定义
+                        <br>
+                        <div id="rangeBID" style="display:none"><input id="rangeB" type="range" value="0" onchange="changeVI()" oninput="changeVI()"><span id="rangeBvlue">0</span>/<span id="Bvlue">0</span>作训练</div>
+                        <p style="color:green">在下个版本中选择了训练集就等于选择了xxx.names文件，但是现在版本中的用户训练集中没有该文件，属于训练集制作的部分内容</p>
+                        <p style="color:red">*如果有下个版本</p>
+                    </div>
+                    <br>
+                    <hr>
+
+                    <h3>三、模型配置</h3>
+                    <div>
+                        <p style="color:red">以下内容随便填写，没有任何作用</p>
+                        <select id="mdList3" name="list3" style="width: 355px;">
+                            <option value="1">yolov4-tiny.cfg</option>
+                            <option value="2">yolov4.cfg</option>
+                        </select><br>
+                        <input id="cfg_batch" type="text" value="64" style="width: 355px;"></br>
+                        <input id="cfg_subdivisions" type="text" value="16" style="width: 355px;"></br>
+                        <input id="cfg_width" type="text" value="608" style="width: 355px;"></br>
+                        <input id="cfg_height" type="text" value="608" style="width: 355px;"></br>
+                        ....</br>
+                        <input id="cfg_max_batches" type="text" value="40000" style="width: 355px;"></br>
+                        <input id="cfg_steps" type="text" value="25000,30000,35000" style="width: 355px;"></br>
+                        <input id="cfg_scales" type="text" value=".1,.1,.1" style="width: 355px;"></br>
+
+                    </div>
+                    <button style="font-size:2em" id="button_id1" onclick="adda('object')">点此创建</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--第三级页面-->
+    <div class="item3" id="item32">
+        <!--训练详情页面-->
+        <h1>训练详情：--------------------------------------该页面取自0.4版</h1>
+        <h1 id="resultx" onclick="run()">未运行，点此运行</h1>
+        <div class="svglook"></div>
+        <div id="txr" style="height:20px;">特别说明：该页面将在0.6更新，取消文本的打印，运行后收到步数信息才会开启图像</div>
+    </div>
+</body>
+
+<script>
+    var r = confirm("是否测试0.3修改版,使用0.3版需要修改部分后端路径，根据对应报错进行修改即可");
+    if (r == true) {
+        window.location.href = "/go03"
+    } else {
+        console.log("进入1.0版")
+    }
+
+
+    var dataX = [];
+    var series = [{ name: 'avg_loss', data: [] }]
+    var line = new Line();
+    var logit = 0;
+    var myImgNum = 0;
+    var usImgNum = 0;
+    var selectUsImgNum = 0;
+    var SYNC = 1;
+    //页面跳转(伪)
+    function go21() {
+        //调整元素块，展示“第二级页面”的第一个页面。
+        $("#item").css('display', 'none');
+        $("#item21").css('display', 'block');
+        loadUser('trains');
+    }
+    function go22() {
+        //调整元素块，展示“第二级页面”的第二个页面。
+        $("#item").css('display', 'none');
+        $("#item22").css('display', 'block');
+        loadUser('object');
+    }
+
+    //功能类
+
+    function showTrains(e) {
+        //alert(e.firstElementChild.innerHTML)
+        //alert("警告！该访问没有任何加密！\nps:任何人都可以通过稍微修改url中\n的用户id和其拥有的数据集id进行拉取标注")
+        window.location.href = "/via?userId=" + $('#userid').html() + "&trainSetId=" + e.firstElementChild.innerHTML;
+    }
+
+    function deletT(e) {
+        
+        //alert(e.firstElementChild.innerHTML)
+        //alert("警告！该访问没有任何加密！\nps:任何人都可以通过稍微修改url中\n的用户id和其拥有的数据集id进行拉取标注")
+        //window.location.href = "/via?userId=" + $('#userid').html() + "&trainSetId=" + e.firstElementChild.innerHTML;
+        var form_data = new FormData();
+        form_data.append('what', 'trains');
+        form_data.append('userid', $('#userid').html());
+        e.parentNode.style.display = "none";
+        form_data.append('thisis', e.parentNode.firstElementChild.innerHTML)
+        outdata = AJAX2(/deletit/, form_data, true,false)
+        event.stopPropagation()
+    }
+
+    function showObject(e) {
+        alert("跳转到0.4版页面，新页面暂没成型")
+        $("#item32").css('display', 'inline');
+    }
+    function changeV() {
+        $("#rangeAvlue").html($("#rangeA").val())
+        selectUsImgNum = $("#rangeA").val()
+        $("#sumImg").html(myImgNum * 1.0 + selectUsImgNum*1.0)
+    }
+    function changeVI() {
+        $("#rangeBvlue").html($("#rangeB").val())
+        selectUsImgNum = $("#rangeB").val()
+    }
+    $.fn.RangeSlider = function (cfg) {
+        this.sliderCfg = {
+            min: cfg && !isNaN(parseFloat(cfg.min)) ? Number(cfg.min) : null,
+            max: cfg && !isNaN(parseFloat(cfg.max)) ? Number(cfg.max) : null,
+            step: cfg && Number(cfg.step) ? cfg.step : 1,
+            callback: cfg && cfg.callback ? cfg.callback : null
+
+        };
+
+        var $input = $(this);
+        var min = this.sliderCfg.min;
+        var max = this.sliderCfg.max;
+        var step = this.sliderCfg.step;
+        var callback = this.sliderCfg.callback;
+
+        $input.attr('min', min)
+            .attr('max', max)
+            .attr('step', step);
+
+        $input.bind("input", function (e) {
+            $input.attr('value', this.value);
+            $input.css('background', 'linear-gradient(to right, #000, #ccc ' + this.value*100 / cfg.max + '%, #ebeff4)');
+
+            if ($.isFunction(callback)) {
+                callback(this);
+            }
+
+        });
+    };
+
+    function selectFilesNum(e) {
+        myImgNum = e.files.length
+        $("#upvlue").html(myImgNum);
+        if ($("#ckA").is(':checked')) {
+            $("#sumImg").html(myImgNum * 1.0 + usImgNum * 1.0)
+        } else
+            $("#sumImg").html(myImgNum * 1.0 + selectUsImgNum * 1.0)
+        
+    }
+
+    function showRangeA(e) {
+        if (e.checked) {
+            $("#rangeAA").css('display', 'none');
+            $("#sumImg").html(myImgNum + usImgNum)
+        }
+        else {
+            $("#rangeAA").css('display', 'inline');
+            $('#rangeA').RangeSlider({ min: 0, max: usImgNum, step: 1, callback: '' });
+            //selectUsImgNum = 0;
+            $("#sumImg").html(myImgNum * 1.0 + selectUsImgNum * 1.0)
+        }
+            
+    }
+
+    function showupImg(e) {
+        if (e.checked) {
+            $("#upImg").css('display', 'inline');
+            //alert()
+            if ($("#ckA").is(':checked')) {
+                //alert(usImgNum * 1.0)
+                $("#sumImg").html(usImgNum * 1.0 + myImgNum * 1.0)
+            } else
+                $("#sumImg").html(myImgNum * 1.0 + selectUsImgNum * 1.0)
+        }
+        else {
+            $("#upImg").css('display', 'none');
+            
+            if ($("#ckA").is(':checked')) {
+                //alert(usImgNum * 1.0)
+                $("#sumImg").html(usImgNum * 1.0)
+            } else
+                $("#sumImg").html(selectUsImgNum * 1.0)
+        }
+            
+    }
+
+    function showAddForm(who) {
+        if (who == 'addForm2') {
+            //alert(who)
+            $("#addForm2").css('display', 'inline');
+            loadUserTs()
+        } else {
+            $("#addForm1").css('display', 'inline');
+        }
+    }
+    
+    function getTheX(str) {
+        out = str.split(" ")
+        //console.log(out)
+        if (!isNaN(out[3])) {
+            //console.log(out[1])
+            ret = out[1].replace(":", "");
+            if (ret * 1.0 == 1.0 || ret * 1.0 == 2.0) logit = 1;
+        }
+        if (logit == 1) return ret
+    }
+    function getTheY(str) {
+        out = str.split(" ")
+
+        if (!isNaN(out[3]) && logit == 1) {
+            //console.log(out[3])
+            return out[3] * 1.0
+        }
+    }
+
+    function addvw2listvw(what,isNmae,isOther) {
+        if (what == "tarinSetList") {
+            myImgNum = 0;
+            selectUsImgNum = 0;
+            $('#ckA').attr("checked", true);
+            $('#ckB').attr("checked", false);
+            $("#rangeAA").val('0');
+            $("#rangeAvlue").html('0')
+            $("#upvlue").html('0')
+            $("#sumImg").html(usImgNum)
+            $("#rangeAA").css('display', 'none');
+            $("#upImg").css('display', 'none');
+            $("#button_id2").css('display', 'inline');
+            $("#addForm1").css('display', 'none');
+            var newHtml = "<div class='mytrains' onclick='showTrains(this)'><div>" + isNmae + "</div><div>" + isOther + "张图</div><div>点此进行标注</div></div>"
+            $("#item21").html(newHtml + $("#item21").html());
+            
+        } else {
+            alert("我返回的from22，不是tarinSetList")
+        }
+    }
+
+    //下面的均为通讯相关
+
+    function AJAX2(flaskUrl, form_data, ifAsunc = false, ifXhr = false) {
+        var out = null;
+        if (!ifXhr) {
+            $.ajax({
+                async: ifAsunc,
+                url: flaskUrl,
+                type: 'POST',
+                headers: { "X-CSRFToken": '' },
+                data: form_data,
+                processData: false,  // tell jquery not to process the data
+                contentType: false, // tell jquery not to set contentType
+                beforeSend: function () {
+                    //$("#fkjg").html('loading....');
+                },
+                success: function (data) {
+                    //data = JSON.parse(data);
+                    //console.log(data)
+                    if (data.status) {
+                        out = data
+                    }
+                }
+            });
+        } else {
+            $.ajax({
+                async: ifAsunc,
+                url: flaskUrl,
+                type: 'POST',
+                headers: { "X-CSRFToken": '' },
+                data: form_data,
+                processData: false,  // tell jquery not to process the data
+                contentType: false, // tell jquery not to set contentType
+                xhr: function () {
+                    var xhr = new XMLHttpRequest();
+                    xhr.upload.addEventListener('progress', function (e) {
+                        //console.log(e);
+                        //loaded代表上传了多少
+                        //total代表总数为多少
+                        var progressRate = (e.loaded / e.total) * 100 + '%';
+                        //console.log(progressRate)
+                        if (progressRate == '100%') {
+                            SYNC = 0;
+                            $("#uprogress").css('display', 'none');
+                            addvw2listvw("tarinSetList", form_data.get('trainSetName'), form_data.get('howManyImg'))
+                        }
+                            
+                        //console.log(SYNC)
+                        //通过设置进度条的宽度达到效果
+                        $('.progress > div').css('width', progressRate);
+                    })
+
+                    return xhr;
+                },
+                beforeSend: function () {
+                    //$("#fkjg").html('loading....');
+                },
+                success: function (data) {
+                    //data = JSON.parse(data);
+                    //console.log(data)
+                    if (data.status) {
+                        out = data
+                    }
+                }
+            });
+        }
+        
+        if (out != null) {
+            //alert(out)
+            return out;
+        }
+    }
+
+    function loadUserTs() {
+        var form_data = new FormData();
+        form_data.append('what', 'trains');
+        form_data.append('userid', $('#userid').html());
+        outdata = AJAX2(/loadUser/, form_data)
+        var newHtml = ''
+        $('#Bvlue').html(outdata.msg[0].describe)
+        for (var i = 0; i < outdata.msg.length; i++) {
+            //console.log(outdata.msg[i].name, outdata.msg[i].describe)
+            newHtml += "<option value='" + outdata.msg[i].describe+"'>" + outdata.msg[i].name +"</option>"
+        }
+        $("#mdList2").html(newHtml);
+        $("#mdList2").change(function () {
+            var opt = $("#mdList2").val();
+            $('#rangeB').RangeSlider({ min: 0, max: opt, step: 1, callback: '' });
+            $('#Bvlue').html(opt)
+        });
+        $(":radio").click(function () {
+            if ($(this).val() == '4') {
+                $("#rangeBID").css('display', 'inline');
+                var opt = $("#mdList2").val();
+                $('#rangeB').RangeSlider({ min: 0, max: opt, step: 1, callback: '' });
+                $('#Bvlue').html(opt)
+            } else {
+                $("#rangeBID").css('display', 'none');
+            }
+        });
+    }
+
+    function loadUser(what) {
+        var form_data = new FormData();
+        form_data.append('what', what);
+        form_data.append('userid', $('#userid').html());
+        outdata = AJAX2(/loadUser/, form_data)
+        if (what == 'object') {
+            var newHtml = ''
+            //alert(outdata.msg.length)
+            for (var i = 0; i < outdata.msg.length; i++) {
+                //console.log(outdata.msg[i].name)
+                newHtml += "<div class='myobject' onclick='showObject(this)'><div>" + outdata.msg[i].name + "</div><div>" + outdata.msg[i].describe + "</div><div><span>·</span>未运行，点击运行并查看状态</div></div>"
+            }
+            $("#item22").html(newHtml + $("#item22").html());
+            return
+        } else {
+            //alert("我点的左边！")
+            var newHtml = ''
+            //alert(outdata.msg.length)
+            for (var i = 0; i < outdata.msg.length; i++) {
+                //console.log(outdata.msg[i].name)
+                newHtml += "<div class='mytrains' onclick='showTrains(this)'><div>" + outdata.msg[i].name + "</div><div>" + outdata.msg[i].describe + "张图</div><div>点此进行标注</div><span class='del' onclick='deletT(this)' title='删除'>X</span></div>"
+            }
+            $("#item21").html(newHtml + $("#item21").html());
+            usImgNum = outdata.serverFiles
+            $("#sumImg").html(usImgNum * 1.0)
+            return
+        }
+
+    }
+
+    function adda(what) {
+        var form_data = new FormData();
+        if (what == 'trains') {
+           
+            form_data.append('what', what);
+            form_data.append('userid', $('#userid').html());
+            if ($('#trainsName').val() == '') {
+                $('#trainsName').css('border', '2px solid red');
+                alert("训练集必须起一个名字！")
+                return
+            } else
+                form_data.append('trainSetName', $('#trainsName').val());
+            $("#button_id2").css('display', 'none');
+            if ($("#ckA").is(':checked')) {
+                form_data.append('constImg', usImgNum);
+            } else
+                form_data.append('constImg', selectUsImgNum);
+            if ($("#ckB").is(':checked')) {
+                form_data.append('upImg', "UPIMG");
+                var filess = document.getElementById("UPtrainsFile").files
+                //alert(filess.length)
+                for (var i = 0; i < filess.length; i++) {
+                    form_data.append('FILE', document.getElementById("UPtrainsFile").files[i]);
+                }
+            } else
+                form_data.append('upImg', "NOUP");
+            form_data.append('howManyImg', $("#sumImg").html());
+            var outdata = {};
+            if ($("#ckB").is(':checked')) {
+                $("#uprogress").css('display', 'block');
+                outdata = AJAX2(/addObject/, form_data, true, true)
+                //异步接却方案
+                //while (SYNC == 1) {
+                //    console.log(SYNC)
+                //}
+                outdata ="非同步返回结果，仅代表已返回"
+            }   
+            else
+                outdata = AJAX2(/addObject/, form_data)
+            if (outdata != "非同步返回结果，仅代表已返回") {
+                addvw2listvw("tarinSetList", $('#trainsName').val(), $("#sumImg").html())
+            }
+            //console.log(outdata)
+            return
+        }
+        var form_data = new FormData();
+        form_data.append('what', what);
+        form_data.append('userid', $('#userid').html());
+        if ($('#name').val() == '') {
+            $('#name').css('border', '2px solid red');
+            alert("训练项目必须起一个名字！")
+            return
+        } else
+            form_data.append('objname', $('#name').val());
+        form_data.append('objtxt', $('#nameTxr').val());
+        form_data.append('mdList1', $('#mdList1').val());
+        form_data.append('mdList2', $('#mdList2').val());
+        form_data.append('batch', $('#cfg_batch').val());
+        form_data.append('subdivisions', $('#cfg_subdivisions').val());
+        form_data.append('width', $('#cfg_width').val());
+        form_data.append('height', $('#cfg_height').val());
+        form_data.append('max_batches', $('#cfg_max_batches').val());
+        form_data.append('steps', $('#cfg_steps').val());
+        form_data.append('scales', $('#cfg_scales').val());
+
+        //0.5新增
+        form_data.append('使用的训练集名', $("#mdList2 option:selected").html());
+        if ($('input:radio:checked').val() == 4) {
+            form_data.append('训练图像比例', $('#rangeB').val()+".个");
+        }else
+        form_data.append('训练图像比例', $('input:radio:checked').val());
+
+        outdata = AJAX2(/addObject/, form_data)
+        if (what == 'object') {
+            $("#addForm").css('display', 'none');
+            var newHtml = "<div class='myobject' onclick='showObject()'><div>" + $('#name').val() + "</div><div>" + $('#nameTxr').val() + "</div><div><span>·</span>未运行，点击运行并查看状态</div></div>"
+            $("#item22").html(newHtml + $("#item22").html());
+        }
+    }
+
+
+
+    var isfirts = 1 //全局变量记录轮询开始
+    //var kg="k"
+    function ajajajax(isfirts) { //递归函数
+        var form_data = new FormData();
+        //alert($('#cmd').val())
+        form_data.append('cmd', 1);//$('#mdList1').val());
+        form_data.append('isFirst', isfirts);
+        $.ajax({
+            url: '/logicMe/',
+            type: 'POST',
+            headers: { "X-CSRFToken": '' },
+            data: form_data,
+            processData: false,  // tell jquery not to process the data
+            contentType: false, // tell jquery not to set contentType
+            beforeSend: function () {
+                //$("#fkjg").html('loading....');
+            },
+            success: function (data) {
+                //data = JSON.parse(data);
+                if (data.status) {
+                    //$("#txr").html($("#txr").html() + "<div>" + data.msg + "</div>");
+                    X = getTheX(data.msg)
+                    Y = getTheY(data.msg)
+                    if (Y != undefined) {
+                        dataX.push(X)
+                        series[0].data.push(Y)
+                        //console.log(dataX)
+                        //console.log(series)
+                        line
+                            .dataX(dataX)
+                            .series(series)
+                            .render()
+                    }
+                    isfirts += 1
+                    if (data.end == 1) {
+                        //$("#button_id").attr('disabled',false);//把按钮恢复可点击状态
+                        $("#resultx").css('color', 'red');
+                        $("#resultx").html('未运行');
+                        isfirts = 1
+                        return        //跳出递归
+                    }
+                    ajajajax(isfirts)
+                }
+            }
+        });
+    }
+
+
+    function run() {
+        //alert("in")
+        $("#resultx").css('color', 'green');
+        $("#resultx").html('正在运行');
+        ajajajax(isfirts);
+    }
+
+    $("#button_id").click(function () {
+        $("#button_id").attr('disabled', true);//把按钮搞成不能点击，以表在运行
+        ajajajax(isfirts);
+    })
+
+    //新交互模式测试
+    var ws = new WebSocket('ws://127.0.0.1:8910/ws');
+    ws.onmessage = function (data) {
+        alert(data)
+    }
+</script>

@@ -1,0 +1,27 @@
+﻿生成启动时间为 2020/8/3 13:02:50。
+     1>项目“C:\Users\yourkg\Desktop\试题5(未做)\Demo1\Demo1.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“.\Release\Demo1.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       ClCompile:
+         所有输出均为最新。
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Ob1 /Oy- /D WIN32 /D NDEBUG /D _WINDOWS /D _VC80_UPGRADE=0x0600 /D _MBCS /D _AFXDLL /GF /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp".\Release\Demo1.pch" /Fo".\Release\\" /Fd".\Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt Demo1Dlg.cpp
+         Demo1Dlg.cpp
+       ResourceCompile:
+         所有输出均为最新。
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:".\Release\Demo1.exe" /INCREMENTAL:NO /NOLOGO /MANIFEST /ManifestFile:".\Release\Demo1.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /PDB:"C:\Users\yourkg\Desktop\试题5(未做)\Demo1\Release\Demo1.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\Release\Demo1.lib" /MACHINE:X86 .\Release\Demo1.res
+         .\Release\CDIB.obj
+         .\Release\Demo1.obj
+         .\Release\Demo1Dlg.obj
+         .\Release\StdAfx.obj
+         Demo1.vcxproj -> C:\Users\yourkg\Desktop\试题5(未做)\Demo1\.\Release\Demo1.exe
+       Manifest:
+         c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:".\Release\Demo1.exe;#1" /manifest .\Release\Demo1.exe.intermediate.manifest "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\Include\Manifest\dpiaware.manifest"
+       FinalizeBuildStatus:
+         正在删除文件“.\Release\Demo1.unsuccessfulbuild”。
+         正在对“.\Release\Demo1.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“C:\Users\yourkg\Desktop\试题5(未做)\Demo1\Demo1.vcxproj”(build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:00.57

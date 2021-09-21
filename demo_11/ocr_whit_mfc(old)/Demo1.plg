@@ -1,0 +1,42 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Demo1 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/Demo1.res" /d "_DEBUG" /d "_AFXDLL" "E:\公司管理和行政文档\招聘\应用软件部图像处理工程师招聘试题\上机试题\上机试题－去除毛刺\Demo1\Demo1\Demo1.rc"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP37.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/Demo1.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\公司管理和行政文档\招聘\应用软件部图像处理工程师招聘试题\上机试题\上机试题－去除毛刺\Demo1\Demo1\CDIB.CPP"
+"E:\公司管理和行政文档\招聘\应用软件部图像处理工程师招聘试题\上机试题\上机试题－去除毛刺\Demo1\Demo1\Demo1.cpp"
+"E:\公司管理和行政文档\招聘\应用软件部图像处理工程师招聘试题\上机试题\上机试题－去除毛刺\Demo1\Demo1\Demo1Dlg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP37.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP38.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/Demo1.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\公司管理和行政文档\招聘\应用软件部图像处理工程师招聘试题\上机试题\上机试题－去除毛刺\Demo1\Demo1\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP38.tmp" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/Demo1.pdb" /debug /machine:I386 /out:"Debug/Demo1.exe" /pdbtype:sept  ".\Debug\CDIB.OBJ" ".\Debug\Demo1.obj" ".\Debug\Demo1Dlg.obj" ".\Debug\StdAfx.obj" ".\Debug\Demo1.res" "
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+CDIB.CPP
+Demo1.cpp
+Demo1Dlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+Demo1.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

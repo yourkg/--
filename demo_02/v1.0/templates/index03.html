@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>0.3测试</title>
+<style>
+
+</style>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+<div id="twowb">
+    <div id="onewb" >
+        <h2>新建模型训练，它会立即运行，你无法进行任何干预，只支持观察输出日志</h2>
+        <select id="mdList1" name="list1">  
+	       <option value="yolov4">yolov4(默认)</option>
+            <option value="yolov3">yolov3</option>
+        </select>*此处选择模型后，下面训练配置部分的内容会按照选项，刷新。后继版本完成，来实现一些想法中的第一条。因为是动态页面，就不用跳转了。</br>
+        <input id="name" type="text" placeholder="名称" ></br>
+        <textarea id="nameTxr" rows="10" cols="30">描述..</textarea>
+        <hr>
+        <h3>训练配置</h3>
+        <h5>一、训练集配置</h5>
+        <p style="color:red">*牵扯内容过多当前版本暂不支持设置</p>
+        <p style="color:green">*请输入识别的类别名称</p>
+        <textarea id="class_names" rows="10" cols="30"></textarea>
+
+        <p style="color:red">*此处需要添加可以选择数据文件夹 可以选多个</p> 
+        <select id="ratio" name="list3">  
+           <option value="0">0</option>
+            <option value="8:2">8:2</option>
+            <option value="9:1">9:1</option>
+        </select>*占比 #训练集:验证集 0、8:2或9:1(其中0代表全训练集)</br>
+        <h5>二、模型配置</h5>
+        <p style="color:green">*即.cfg文件配置,当前测试中,后台对应 目录生成user_yolov4-tiny.cfg以供观察,但不参与执行</p>
+        <select id="mdList2" name="list2">
+	<option value="yolov4-tiny.cfg">yolov4-tiny.cfg</option>
+                <option value="yolov4.cfg">yolov4.cfg</option>
+        </select>*此处应该选择后，服务器立即返回默认配置以填充下面表单，0.4版本支持，当前版本默认yolov4-tiny.cfg，且仅支持修改以下部分参数，以便测试程序</br>
+        <input id="cfg_batch" type="text" value="64">batch</br>
+        <input id="cfg_subdivisions" type="text" value="16">subdivisions (根据你的GPU性能可调整 16 ,32 or 64)</br>
+        <input id="cfg_width" type="text" value="608">width #32的倍数(416 ...... 608)，当前表单不会做任何检测，随便填</br>
+        <input id="cfg_height" type="text" value="608">height #32的倍数(416 ...... 608)</br>
+        <input id="cfg_angle" type="text" value="0">angle 图片旋转的角度</br>
+        <input id="cfg_learning_rate" type="text" value="0.001">learning_rate 学习率</br>
+        <input id="cfg_max_batches" type="text" value="40000">max_batches</br>
+        <input id="cfg_steps" type="text" value="25000,30000,35000">steps</br>
+        <input id="cfg_scales" type="text" value=".1,.1,.1">scales</br>
+        
+        <p style="color:red">训练集配置完成后，请认真检查</p><button id="button_id1">点此创建</button>
+      
+        <!--<div>
+            <div>
+                <input id="cmd" type="text" placeholder="命令" >
+                <span>
+                    <button id="button_id">执行</button>
+                </span>
+            </div>
+        </div>即将删除-->
+    </div>
+    <!--<div id="result">
+        <h3>结果</h3>
+        <textarea id="txr" rows="20" cols="100">
+            
+        </textarea>
+    </div>即将删除-->
+</div>
+
+<div id="result" style="display:none">
+        <h3 style="color:red" id="resultx">未运行</h3>
+        <textarea id="txr" rows="200" cols="100">
+            
+        </textarea>
+    </div>
+</body>
+
+<script>  // 训练log日志
+
+var isfirts=1 //全局变量记录轮询开始
+function ajajajax(isfirts) { //递归函数
+             var form_data = new FormData();
+             //alert($('#cmd').val())
+             form_data.append('cmd',1);//$('#mdList1').val());
+             form_data.append('isFirst',isfirts);
+             $.ajax({
+                     url: '/logicMe/',
+                     type: 'POST',
+                     headers: {"X-CSRFToken": ''},
+                     data: form_data,
+                     processData: false,  // tell jquery not to process the data
+                     contentType: false, // tell jquery not to set contentType
+                     beforeSend: function () {
+                         //$("#fkjg").html('loading....');
+                     },
+                     success: function (data) {
+                         //data = JSON.parse(data);
+                         if (data.status) {
+                             $("#txr").html($("#txr").html()+data.msg);
+                             isfirts+=1
+                             if(data.end==1){
+                                //$("#button_id").attr('disabled',false);//把按钮恢复可点击状态
+                                $("#resultx").css('color','red');
+        $("#resultx").html('未运行');
+                                isfirts=1
+                               return        //跳出递归
+                              }
+                             ajajajax(isfirts)
+                         }
+                     }
+                 });
+}
+
+//上传设置数据 表单的形式
+$("#button_id1").click(function (){
+             var form_data = new FormData();
+             //前端以"<input type='text' name='textinput' value='text input' />"
+             form_data.append('mdList1',$('#mdList1').val()); 
+             form_data.append('mdList2',$('#mdList2').val());
+             form_data.append('class_names',$('#class_names').val());
+             form_data.append('ratio',$('#ratio').val());
+             form_data.append('batch',$('#cfg_batch').val());
+             form_data.append('subdivisions',$('#cfg_subdivisions').val());
+             form_data.append('width',$('#cfg_width').val());
+             form_data.append('height',$('#cfg_height').val());
+             form_data.append('angle',$('#cfg_angle').val())
+             form_data.append('learning_rate',$('#cfg_learning_rate').val())
+             form_data.append('max_batches',$('#cfg_max_batches').val());
+             form_data.append('steps',$('#cfg_steps').val());
+             form_data.append('scales',$('#cfg_scales').val());
+             form_data.append('filters',$('#cfg_filters').val())
+             form_data.append('classes',$('#cfg_classes').val())
+             $.ajax({
+                     url: '/logicMake/',//对应后端的@app.route('/logicMake/',methods = ["GET","POST"])
+                     type: 'POST',
+                     headers: {"X-CSRFToken": ''},
+                     data: form_data,
+                     processData: false,  // tell jquery not to process the data
+                     contentType: false, // tell jquery not to set contentType
+                     beforeSend: function () {
+                         //$("#fkjg").html('loading....');
+                     },
+                     success: function (data) {
+                         //data = JSON.parse(data);
+                         if (data.status) {
+                             $("#twowb").html("<div><h2>训练列表<h2><hr><div><h1>"+$('#name').val()+
+"</h1><h4>"+
+$('#nameTxr').val()+"</h4><p onclick='run()'>点此运行</p></div></div>"
+                              );
+                             //alert(data.msg)
+                             //ajajajax(isfirts)
+                             //$("#onewb").css('display','none');
+                             $("#result").css('display','block');
+                         }
+                     }
+                 });
+})
+
+function run(){
+      //alert("in")
+         $("#resultx").css('color','green');//隐藏变为不隐藏
+        $("#resultx").html('正在运行');
+       ajajajax(isfirts);
+}
+
+$("#button_id").click(function (){
+             $("#button_id").attr('disabled',true);//把按钮搞成不能点击，以表在运行
+             ajajajax(isfirts);
+})
+
+</script>

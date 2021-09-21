@@ -1,0 +1,5 @@
+./static/public_train/images/000000.jpg
+./static/public_train/images/000001.jpg
+./static/public_train/images/000002.jpg
+./static/public_train/images/000003.jpg
+./static/public_train/images/000004.jpg

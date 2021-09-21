@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CAboutDlg" Collapsed="true">
+    <Position X="0.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Demo1Dlg.cpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDib" Collapsed="true">
+    <Position X="2.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAoAABMAigAAABKAgAMkAKBoWAAAAAAIIgNEAoA=</HashCode>
+      <FileName>CDIB.H</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDemo1App" Collapsed="true">
+    <Position X="2.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>Demo1.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CDemo1Dlg" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EACAAAEAAAAAAAACABAABiQAAAAAAAQAAAAAAAAQAAA=</HashCode>
+      <FileName>Demo1Dlg.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="微软雅黑" Size="9" />
+</ClassDiagram>

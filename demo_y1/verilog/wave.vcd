@@ -1,0 +1,46 @@
+$date
+	Wed Jun 23 20:16:07 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10ps
+$end
+$scope module inv_tb $end
+$var wire 8 ! yy [7:0] $end
+$var reg 8 " aa [7:0] $end
+$scope module inv $end
+$var wire 8 # A [7:0] $end
+$var wire 8 $ Y [7:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b10101111 $
+b1010000 #
+b1010000 "
+b10101111 !
+$end
+#1000
+b0 !
+b0 $
+b11111111 "
+b11111111 #
+#2000
+b11111111 !
+b11111111 $
+b0 "
+b0 #
+#3000
+b10100110 !
+b10100110 $
+b1011001 "
+b1011001 #
+#5000
+b10000000 !
+b10000000 $
+b1111111 "
+b1111111 #
+#6000
